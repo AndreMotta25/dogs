@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "commit": "cz"
   },
   "eslintConfig": {
     "extends": [
@@ -41,5 +42,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-emoji-conventional": "^1.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-emoji-conventional"
+    }
   }
 }
