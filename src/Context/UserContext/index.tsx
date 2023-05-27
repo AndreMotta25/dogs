@@ -5,7 +5,7 @@ import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from '../../api';
 type Token= {
   token:string
 }
-type User = {
+export type User = {
   id:number;
   email:string;
   nome:string;
@@ -45,7 +45,7 @@ const UserStorage = ({children}:Props) => {
     setLogin(false);
     localStorage.removeItem('token');
     navigate('/login')
-  },[navigate])
+  },[])
 
   useEffect(() => {
     const autoLogin = async () => {
@@ -65,6 +65,9 @@ const UserStorage = ({children}:Props) => {
           setLoading(false);
         }
       }
+      else {
+        setLogin(false);
+      }
     }
     autoLogin()
   },[userLogout])
@@ -82,7 +85,7 @@ const UserStorage = ({children}:Props) => {
       setLoading(true);
       const {url,options} = TOKEN_POST({username,password});
       const response = (await fetch(url,options))
-      
+      console.log(response)
       if(!response.ok) throw new Error(`Error: ${response.statusText}`);
       
       const responseToken = await response.json();
@@ -94,8 +97,9 @@ const UserStorage = ({children}:Props) => {
       }
     }
     catch(e){
-      if(e instanceof Error)
-        setError(e.message);
+      if(e instanceof Error){        
+        setError("senha ou email incorretos");
+      }
       setLogin(false);
     }
     finally {
