@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 
 const validations = {
     email: {
-        regex: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        message: 'Preencha um email valido'
+      regex: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+      message: 'Preencha um email valido'
+    },
+    number: {
+      regex:  /^\d+$/,
+      message: "Utilize numeros apenas"
     }
 }
 
