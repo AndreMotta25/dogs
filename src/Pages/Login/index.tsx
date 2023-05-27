@@ -5,19 +5,26 @@ import LoginCreate from './Components/LoginCreate';
 import LoginForm from './Components/LoginForm';
 import LoginPasswordLost from './Components/LoginPasswordLost';
 import LoginPasswordReset from './Components/LoginPasswordReset';
+import styles from './styles.module.css'
+import NotFound from '../NotFound';
 
 const Login = () => {
   const {login} = useUserContext();
+  
+  if(login === true) return <Navigate to='/conta'/>
+  
   return (
-    <div>
-      {login && <Navigate to='/conta'/>}
-      <Routes>
-        <Route path='/' element={<LoginForm/>}/>
-        <Route path='criar' element={<LoginCreate/>}/>
-        <Route path='perdeu' element={<LoginPasswordLost/>}/>
-        <Route path='resetar' element={<LoginPasswordReset/>}/>
-      </Routes>
-    </div>
+    <section className={styles.login}>
+      <div className={styles.forms}>
+        <Routes>
+          <Route path='/' element={<LoginForm/>}/>
+          <Route path='criar' element={<LoginCreate/>}/>
+          <Route path='perdeu' element={<LoginPasswordLost/>}/>
+          <Route path='resetar' element={<LoginPasswordReset/>}/>
+          <Route path='*' element={<NotFound/>} />
+        </Routes>
+      </div>
+    </section>
   )
 }
 
