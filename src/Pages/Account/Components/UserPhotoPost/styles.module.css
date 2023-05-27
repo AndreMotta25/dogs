@@ -1,0 +1,42 @@
+.photoPost {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.file {
+    margin-bottom: 1rem;
+}
+
+.preview {
+    border-radius: 1rem;
+    background-size:  cover;
+    background-position: center center;
+}
+
+/* 
+    No caso do código CSS que você compartilhou, 
+    o valor padding-bottom: 100% significa que o espaço reservado para a 
+    imagem terá a mesma largura que o contêiner da imagem (que é definido em grid-template-columns: 1fr 1fr),
+    mas sua altura será calculada como 100% da largura do contêiner da imagem.
+
+    Em resumo, ao usar padding-bottom com uma porcentagem,
+    estamos definindo a altura de um elemento como uma fração da largura do elemento pai, 
+    permitindo que a imagem seja exibida corretamente,
+    independentemente da altura real da imagem.
+*/
+
+.preview::after {
+    content: '';
+    display: block;
+    height: 0px;
+    padding-bottom: 100%;
+}
+
+@media (max-width:40rem)
+{
+    .photoPost {
+        grid-template-columns: 1fr;
+    }
+}
